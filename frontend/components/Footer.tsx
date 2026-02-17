@@ -15,7 +15,7 @@ export default function Footer() {
 
   return (
     <footer className="relative z-10 border-t border-border bg-bg/80 backdrop-blur-sm">
-      <div className="mx-auto max-w-5xl px-6 py-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-between sm:gap-4">
+      <div className="mx-auto max-w-5xl px-6 py-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-between sm:gap-4">
         {/* Social icons */}
         <div className="flex items-center gap-5">
           <a

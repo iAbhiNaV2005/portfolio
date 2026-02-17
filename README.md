@@ -1,7 +1,5 @@
 # Abhinav Mitra — Portfolio
 
-Minimal dark-aesthetic portfolio website built with **Next.js** (App Router, TypeScript, Tailwind CSS, Framer Motion) and a lightweight **Express.js** backend for persistent counters and contact form handling.
-
 ## Quick Start
 
 ### Prerequisites
@@ -26,7 +24,6 @@ npm install
 npm run dev               # → http://localhost:3000
 ```
 
-The frontend expects the backend at `http://localhost:4000` by default. Set `NEXT_PUBLIC_API_URL` in a `frontend/.env.local` file to override.
 
 ---
 
@@ -47,27 +44,6 @@ The frontend expects the backend at `http://localhost:4000` by default. Set `NEX
 .env.example       Environment variable template
 ```
 
-## API Endpoints
-
-| Method | Endpoint              | Description                    |
-| ------ | --------------------- | ------------------------------ |
-| GET    | `/api/love`           | Get current love count         |
-| POST   | `/api/love`           | Increment love count           |
-| POST   | `/api/track/repo-click` | Track repo link click        |
-| GET    | `/api/stats`          | Admin: all counters            |
-| POST   | `/api/contact`        | Submit contact form            |
-| GET    | `/api/health`         | Health check                   |
-
-## Editing Content
-
-All dummy content lives in **`frontend/lib/data.ts`**. Edit this single file to update:
-
-- Name, tagline, bio
-- Skills, education
-- Projects (title, description, tech, repo links)
-- Experience entries
-- Social links
-- Nav links
 
 ## Deployment
 
@@ -88,24 +64,7 @@ All dummy content lives in **`frontend/lib/data.ts`**. Edit this single file to 
 
 You can move the backend logic into `frontend/app/api/` route handlers to avoid a separate service. This simplifies deployment (single Vercel deploy) but couples concerns. The current split keeps things modular.
 
-## Swapping to MongoDB
 
-1. `cd backend && npm install mongodb`
-2. Replace `src/db.ts` with a MongoDB client using `MongoClient`
-3. Use collections `counters` and `messages` instead of the JSON file
-4. Set `MONGODB_URI` in `.env`
-
-## SMTP Email Forwarding
-
-To receive contact form submissions via email, uncomment and configure the SMTP variables in `.env`:
-
-```env
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=you@gmail.com
-SMTP_PASS=your-app-password
-EMAIL_TO=abhinav.mitra@example.com
-```
 
 ## Tech Stack
 

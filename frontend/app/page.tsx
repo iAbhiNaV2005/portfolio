@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import LoveButton from "@/components/LoveButton";
+import TechMarquee from "@/components/TechMarquee";
 import { siteConfig } from "@/lib/data";
 
 export default function HomePage() {
   return (
-    <section className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center px-6 text-center">
+    <section className="flex flex-1 flex-col items-center justify-center px-6 text-center py-8">
       {/* Headline */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -44,7 +45,7 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        className="mt-8 flex flex-wrap items-center justify-center gap-4"
       >
         <Link
           href="/projects"
@@ -68,7 +69,7 @@ export default function HomePage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.5 }}
-        className="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-text-muted"
+        className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-text-muted"
       >
         {[
           { label: "About", href: "/about" },
@@ -83,6 +84,16 @@ export default function HomePage() {
             {link.label}
           </Link>
         ))}
+      </motion.div>
+
+      {/* Tech marquee */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="mt-8 w-full max-w-3xl"
+      >
+        <TechMarquee />
       </motion.div>
     </section>
   );

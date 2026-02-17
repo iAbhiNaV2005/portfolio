@@ -33,10 +33,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased flex flex-col min-h-screen">
         <CursorParticles />
         <Header />
-        <main className="relative z-10 min-h-screen pt-20">
+        <main className="relative z-10 flex-1 flex flex-col pt-20">
           {children}
         </main>
         <Footer />
