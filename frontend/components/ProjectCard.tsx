@@ -25,7 +25,7 @@ export default function ProjectCard({ project, index }: Props) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
       onClick={handleCardClick}
-      className={`group rounded-xl border border-border bg-surface/50 p-6 backdrop-blur-sm transition-colors hover:border-accent/30 hover:bg-surface ${project.live ? "cursor-pointer" : ""}`}
+      className={`group rounded-xl border border-border bg-surface/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface hover:shadow-[0_0_25px_rgba(99,102,241,0.15),0_0_50px_rgba(99,102,241,0.08)] ${project.live ? "cursor-pointer" : ""}`}
     >
       {/* Thumbnail */}
       <div className="mb-4 h-36 rounded-lg bg-muted/50 flex items-center justify-center overflow-hidden">

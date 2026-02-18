@@ -9,14 +9,35 @@ import { siteConfig } from "@/lib/data";
 export default function HomePage() {
   return (
     <section className="flex flex-1 flex-col items-center justify-center px-6 text-center py-8">
-      {/* Headline */}
+      {/* Animated gradient keyframes */}
+      <style>{`
+        @keyframes gradient-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        @keyframes glow-pulse {
+          0%, 100% { text-shadow: 0 0 20px rgba(99, 102, 241, 0.0); }
+          50% { text-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+        }
+      `}</style>
+
+      {/* Headline — letter stagger */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.5 }}
         className="mb-3 text-sm tracking-widest uppercase text-accent"
       >
-        Welcome
+        {"Welcome".split("").map((char, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + i * 0.05, duration: 0.3 }}
+          >
+            {char}
+          </motion.span>
+        ))}
       </motion.p>
 
       <motion.h1
@@ -26,7 +47,16 @@ export default function HomePage() {
         className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-text-primary"
       >
         Hi — I&apos;m{" "}
-        <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
+        <span
+          style={{
+            backgroundImage: "linear-gradient(270deg, #6366f1, #a855f7, #ec4899, #6366f1)",
+            backgroundSize: "200% 200%",
+            animation: "gradient-shift 4s ease-in-out infinite",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           {siteConfig.name}
         </span>
       </motion.h1>
@@ -36,6 +66,7 @@ export default function HomePage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35, duration: 0.5 }}
         className="mt-4 max-w-xl text-text-secondary text-lg leading-relaxed"
+        style={{ animation: "glow-pulse 3s ease-in-out infinite" }}
       >
         {siteConfig.tagline}
       </motion.p>

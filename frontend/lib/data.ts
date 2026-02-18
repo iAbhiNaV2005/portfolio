@@ -11,7 +11,7 @@ export const siteConfig = {
 export const bio = {
   short:
     "I am Abhinav Mitra. I think in systems. I build in code. I grow through challenge.",
-  location: "Kurukshetra, Haryana, India",
+  location: "Mahendragarh, Haryana, India",
   email: "meabhinav2005@gmail.com",
   phone: "+91 9472635512",
 };
@@ -24,7 +24,7 @@ export const education = {
 
 export const skills = {
   Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux", "Vite", "Framer Motion"],
-  Backend: ["Spring Boot", "Express.js", "FastAPI"],
+  Backend: ["Node.js", "Spring Boot", "Express.js", "FastAPI"],
   Databases: ["MySQL", "PostgreSQL", "Firebase", "Redis"],
   Languages: ["C++", "Java", "Python"],
   Tools: ["VS Code", "Antigravity", "Cursor", "Postman", "Jest Testing", "Git"],

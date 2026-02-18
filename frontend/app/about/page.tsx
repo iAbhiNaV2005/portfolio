@@ -70,7 +70,7 @@ export default function AboutPage() {
                   {items.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-border bg-surface px-3 py-1 text-sm text-text-secondary"
+                      className="rounded-full border border-border bg-surface px-3 py-1 text-sm text-text-secondary transition-all duration-200 hover:scale-110 hover:border-accent/50 hover:text-accent hover:bg-accent/5 cursor-default"
                     >
                       {skill}
                     </span>

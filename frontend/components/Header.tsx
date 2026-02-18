@@ -7,6 +7,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { navLinks } from "@/lib/data";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const pathname = usePathname();
@@ -48,18 +49,21 @@ export default function Header() {
           ))}
         </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden text-text-secondary hover:text-text-primary transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          {menuOpen ? (
-            <XMarkIcon className="w-6 h-6" />
-          ) : (
-            <Bars3Icon className="w-6 h-6" />
-          )}
-        </button>
+        {/* Theme toggle + Mobile hamburger */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            className="md:hidden text-text-secondary hover:text-text-primary transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? (
+              <XMarkIcon className="w-6 h-6" />
+            ) : (
+              <Bars3Icon className="w-6 h-6" />
+            )}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
