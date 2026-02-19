@@ -63,7 +63,7 @@ export const projects: Project[] = [
     title: "GrabPic",
     description:
       "Turn chaotic photo collections into a personalized gallery of you, powered by smart recognition and seamless discovery.",
-    tech: ["Next.js", "Tailwind CSS", "AWS Lambda", "DynamoDB", "AWS S3", "Python face-recognition"],
+    tech: ["Next.js", "Tailwind CSS", "AWS Lambda", "DynamoDB", "AWS S3", "Python face-recognition", "Docker"],
     repo: "",
   },
   {
