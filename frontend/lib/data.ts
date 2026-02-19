@@ -63,7 +63,32 @@ export const projects: Project[] = [
     title: "GrabPic",
     description:
       "Turn chaotic photo collections into a personalized gallery of you, powered by smart recognition and seamless discovery.",
-    tech: ["Next.js", "Tailwind CSS", "AWS Lambda", "AWS RDS (PostgreSQL)", "AWS Rekognition"],
+    tech: ["Next.js", "Tailwind CSS", "AWS Lambda", "DynamoDB", "AWS S3", "Python face-recognition"],
+    repo: "",
+  },
+  {
+    title: "DentalCare",
+    description:
+      "Modern dental clinic website with appointment booking features, streamlined patient management, and service showcases.",
+    tech: [],
+    repo: "",
+    live: "https://truecaredental.in/",
+    thumbnail: "/dentalcare.png",
+  },
+  {
+    title: "Loopless",
+    description:
+      "Leading App Mobile Development Agency website showcasing services, portfolio, and client success stories with high-performance animations.",
+    tech: [],
+    repo: "",
+    live: "https://loopless.agency/site",
+    thumbnail: "/loopless.png",
+  },
+  {
+    title: "Anti-Pollution Routes",
+    description:
+      "Enjoy the travel through routes with least AQI fetched in real time.",
+    tech: ["React.js", "Express.js", "Rest APIs"],
     repo: "",
   },
 ];

@@ -35,7 +35,7 @@ export default function ProjectCard({ project, index }: Props) {
             alt={project.title}
             width={400}
             height={144}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-top"
           />
         ) : (
           <span className="text-3xl font-bold text-text-muted/30 select-none">
@@ -52,16 +52,18 @@ export default function ProjectCard({ project, index }: Props) {
       </p>
 
       {/* Tech badges */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-text-muted"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
+      {project.tech.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-text-muted"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Actions */}
       <div className="flex flex-wrap items-center gap-4">
