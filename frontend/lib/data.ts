@@ -64,7 +64,9 @@ export const projects: Project[] = [
     description:
       "Turn chaotic photo collections into a personalized gallery of you, powered by smart recognition and seamless discovery.",
     tech: ["Next.js", "Tailwind CSS", "AWS Lambda", "DynamoDB", "AWS S3", "Python face-recognition", "Docker"],
-    repo: "",
+    repo: "https://github.com/iAbhiNaV2005/GrabPic.git",
+    live: "https://grab-pic-one.vercel.app/",
+    thumbnail: "/image.png",
   },
   {
     title: "DentalCare",
