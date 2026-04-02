@@ -1,9 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowTopRightOnSquareIcon, PlayIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowTopRightOnSquareIcon,
+  PlayIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import type { Project } from "@/lib/data";
+
+const typeBadge: Record<string, { label: string; className: string }> = {
+  client: {
+    label: "Client Project",
+    className: "bg-accent/10 text-accent border-accent/20",
+  },
+  personal: {
+    label: "Personal",
+    className: "bg-muted text-text-muted border-border",
+  },
+  openSource: {
+    label: "Open Source",
+    className: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+  },
+};
 
 interface Props {
   project: Project;
@@ -11,6 +29,8 @@ interface Props {
 }
 
 export default function ProjectCard({ project, index }: Props) {
+  const badge = typeBadge[project.type] || typeBadge.personal;
+
   const handleCardClick = () => {
     if (project.live) {
       window.open(project.live, "_blank", "noopener,noreferrer");
@@ -44,6 +64,15 @@ export default function ProjectCard({ project, index }: Props) {
         )}
       </div>
 
+      {/* Type badge */}
+      <div className="mb-3">
+        <span
+          className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-medium ${badge.className}`}
+        >
+          {badge.label}
+        </span>
+      </div>
+
       <h3 className="text-lg font-semibold text-text-primary mb-2">
         {project.title}
       </h3>
@@ -68,14 +97,13 @@ export default function ProjectCard({ project, index }: Props) {
       {/* Actions */}
       <div className="flex flex-wrap items-center gap-4">
         {project.live && (
-          <span
-            className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors"
-          >
+          <span className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors">
             <PlayIcon className="w-3.5 h-3.5" />
             Live demo
           </span>
         )}
-        {project.repo ? (
+        {/* Only show repo link for non-client projects */}
+        {project.repo && project.type !== "client" ? (
           <a
             href={project.repo}
             target="_blank"
@@ -86,7 +114,7 @@ export default function ProjectCard({ project, index }: Props) {
             View code
             <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
           </a>
-        ) : !project.live ? (
+        ) : !project.live && !project.repo ? (
           <span className="inline-flex items-center gap-1.5 text-sm text-text-muted italic">
             🚧 Currently in progress
           </span>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { socialLinks, siteConfig } from "@/lib/data";
 import { postRepoClick } from "@/lib/api";
 
@@ -42,17 +43,26 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Repo button */}
-        <button
-          onClick={handleRepoClick}
-          className="text-sm text-text-muted hover:text-accent transition-colors cursor-pointer"
-        >
-          Loved the design — View repo ↗
-        </button>
+        {/* Middle links */}
+        <div className="flex items-center gap-4">
+          <Link
+            href="/resume"
+            className="text-sm text-text-muted hover:text-accent transition-colors"
+          >
+            Resume
+          </Link>
+          <span className="text-border">·</span>
+          <button
+            onClick={handleRepoClick}
+            className="text-sm text-text-muted hover:text-accent transition-colors cursor-pointer"
+          >
+            View source ↗
+          </button>
+        </div>
 
         {/* Copyright */}
         <p className="text-xs text-text-muted">
-          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          © {new Date().getFullYear()} {siteConfig.name}
         </p>
       </div>
     </footer>
