@@ -3,5 +3,24 @@
     "love_count": 47,
     "repo_clicks": 6
   },
-  "messages": []
+  "messages": [
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "This is a test message to verify the contact form delivers emails correctly.",
+      "timestamp": "2026-04-02T19:48:53.723Z"
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "Test message to verify email delivery.",
+      "timestamp": "2026-04-02T19:49:17.808Z"
+    },
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "message": "Test message to verify email delivery works.",
+      "timestamp": "2026-04-02T19:49:56.249Z"
+    }
+  ]
 }

@@ -3,11 +3,11 @@ import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
 import ContactForm from "@/components/ContactForm";
 import { bio } from "@/lib/data";
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Contact — Abhinav Mitra",
-  description: "Get in touch with Abhinav Mitra.",
+  description: "Get in touch with Abhinav Mitra for projects, collaborations, or opportunities.",
 };
 
 export default function ContactPage() {
@@ -15,11 +15,13 @@ export default function ContactPage() {
     <PageTransition>
       <div className="mx-auto max-w-4xl px-6 py-16">
         <SectionReveal>
-          <h1 className="text-3xl font-bold text-text-primary mb-2">Get in Touch</h1>
+          <h1 className="text-3xl font-bold text-text-primary mb-2">
+            Get in Touch
+          </h1>
           <div className="h-1 w-12 rounded-full bg-accent mb-4" />
           <p className="text-text-secondary mb-12 max-w-xl">
-            Have a question or want to collaborate? Send me a message and I&apos;ll
-            get back to you as soon as I can.
+            Whether you have a project idea, a job opportunity, or just want to
+            say hello — I&apos;d love to hear from you.
           </p>
         </SectionReveal>
 
@@ -32,6 +34,19 @@ export default function ContactPage() {
           {/* Sidebar */}
           <SectionReveal>
             <div className="space-y-5">
+              {/* Availability status */}
+              <div className="rounded-lg border border-accent/30 bg-accent/5 p-4 mb-4">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-sm font-medium text-text-primary">
+                    Available for new projects
+                  </span>
+                </div>
+                <p className="text-xs text-text-muted">
+                  Currently accepting freelance work and full-time opportunities.
+                </p>
+              </div>
+
               <div className="flex items-start gap-3">
                 <EnvelopeIcon className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                 <div>
@@ -46,17 +61,11 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <PhoneIcon className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-sm font-medium text-text-primary">Phone</p>
-                  <p className="text-sm text-text-secondary">{bio.phone}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
                 <MapPinIcon className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium text-text-primary">Location</p>
+                  <p className="text-sm font-medium text-text-primary">
+                    Location
+                  </p>
                   <p className="text-sm text-text-secondary">{bio.location}</p>
                 </div>
               </div>

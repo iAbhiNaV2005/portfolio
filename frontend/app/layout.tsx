@@ -7,7 +7,7 @@ import CursorParticles from "@/components/CursorParticles";
 export const metadata: Metadata = {
   title: "Abhinav Mitra — Portfolio",
   description:
-    "Full Stack Developer • Cloud Computing • Low Level System Design. Portfolio of Abhinav Mitra.",
+    "Abhinav Mitra — Full Stack Developer. I build web applications, cloud systems, and digital products for businesses and startups.",
 };
 
 export default function RootLayout({

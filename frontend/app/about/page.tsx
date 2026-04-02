@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
-import { bio, education, skills } from "@/lib/data";
+import { bio, skills, siteConfig } from "@/lib/data";
 import {
   MapPinIcon,
   EnvelopeIcon,
-  PhoneIcon,
-  AcademicCapIcon,
+  ArrowDownTrayIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About — Abhinav Mitra",
-  description: "Learn more about Abhinav Mitra — Full Stack Developer, Cloud, and Low Level System Design.",
+  description:
+    "Full Stack Developer specializing in web applications, cloud architecture, and digital products.",
 };
 
 export default function AboutPage() {
@@ -20,47 +21,46 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl px-6 py-16">
         {/* Heading */}
         <SectionReveal>
-          <h1 className="text-3xl font-bold text-text-primary mb-2">About Me</h1>
+          <h1 className="text-3xl font-bold text-text-primary mb-2">
+            About Me
+          </h1>
           <div className="h-1 w-12 rounded-full bg-accent mb-10" />
         </SectionReveal>
 
         {/* Bio */}
         <SectionReveal>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12 text-lg">
             {bio.short}
           </p>
         </SectionReveal>
 
-        {/* Quick facts */}
+        {/* Quick facts — no phone, no education */}
         <SectionReveal>
           <div className="grid gap-4 sm:grid-cols-2 mb-12">
             <div className="flex items-center gap-3 rounded-lg border border-border bg-surface/50 p-4">
               <MapPinIcon className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-sm text-text-secondary">{bio.location}</span>
+              <span className="text-sm text-text-secondary">
+                {bio.location}
+              </span>
             </div>
             <div className="flex items-center gap-3 rounded-lg border border-border bg-surface/50 p-4">
               <EnvelopeIcon className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-sm text-text-secondary">{bio.email}</span>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-border bg-surface/50 p-4">
-              <PhoneIcon className="w-5 h-5 text-accent shrink-0" />
-              <span className="text-sm text-text-secondary">{bio.phone}</span>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-border bg-surface/50 p-4">
-              <AcademicCapIcon className="w-5 h-5 text-accent shrink-0" />
-              <div className="text-sm text-text-secondary">
-                <span className="font-medium text-text-primary">{education.degree}</span>
-                <br />
-                {education.institution}{education.period ? ` · ${education.period}` : ""}
-              </div>
+              <a
+                href={`mailto:${bio.email}`}
+                className="text-sm text-text-secondary hover:text-accent transition-colors"
+              >
+                {bio.email}
+              </a>
             </div>
           </div>
         </SectionReveal>
 
         {/* Skills */}
         <SectionReveal>
-          <h2 className="text-xl font-semibold text-text-primary mb-6">Skills</h2>
-          <div className="space-y-6">
+          <h2 className="text-xl font-semibold text-text-primary mb-6">
+            Skills & Technologies
+          </h2>
+          <div className="space-y-6 mb-12">
             {Object.entries(skills).map(([category, items]) => (
               <div key={category}>
                 <h3 className="text-sm font-medium text-text-muted mb-2 uppercase tracking-wider">
@@ -78,6 +78,38 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </SectionReveal>
+
+        {/* Resume link for recruiters */}
+        <SectionReveal>
+          <div className="rounded-lg border border-border bg-surface/50 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p className="text-sm font-medium text-text-primary">
+                Looking for my resume?
+              </p>
+              <p className="text-sm text-text-muted mt-1">
+                Download or view my full resume with education and experience
+                details.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <Link
+                href="/resume"
+                className="text-sm text-accent hover:text-accent-hover transition-colors underline underline-offset-4"
+              >
+                View Resume
+              </Link>
+              <a
+                href={siteConfig.resumeDownloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors"
+              >
+                <ArrowDownTrayIcon className="w-4 h-4" />
+                Download PDF
+              </a>
+            </div>
           </div>
         </SectionReveal>
       </div>
