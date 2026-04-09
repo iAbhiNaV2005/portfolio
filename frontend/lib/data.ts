@@ -128,7 +128,7 @@ export const projects: Project[] = [
       "Full-featured e-learning platform with course management, secure payments via Cashfree, OTP authentication, and a custom admin panel for content control.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Cashfree", "Firebase"],
     repo: "",
-    live: "",
+    live: "https://eleveon.in",
     thumbnail: "/eleveon-thumb.png",
     type: "client",
   },
