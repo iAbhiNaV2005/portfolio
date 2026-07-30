@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "Abhinav Mitra — Portfolio",
   description:
     "Abhinav Mitra — Full Stack Developer. I build web applications, cloud systems, and digital products for businesses and startups.",
+  icons: {
+    icon: "/profile.jpg",
+    shortcut: "/profile.jpg",
+    apple: "/profile.jpg",
+  },
 };
 
 export default function RootLayout({

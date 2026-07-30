@@ -198,6 +198,25 @@ export const projects: Project[] = [
     repo: "",
     type: "personal",
   },
+  {
+    title: "CodeRAG",
+    description:
+      "Natural language code-search platform that ingests any public GitHub repo, embeds code chunks into pgvector, and answers codebase questions with sub-3s retrieval latency.",
+    tech: [
+      "Next.js",
+      "FastAPI",
+      "Spring Boot",
+      "pgvector",
+      "DynamoDB",
+      "LangChain",
+      "Gemini API",
+      "AWS",
+    ],
+    repo: "https://github.com/iAbhiNaV2005/coderag",
+    live: "https://codrag-xi.vercel.app/",
+    thumbnail: "/coderag.png",
+    type: "personal",
+  },
 ];
 
 /* ---------- Experience ---------- */
