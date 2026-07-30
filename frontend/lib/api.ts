@@ -1,32 +1,40 @@
 /**
- * API helpers for communicating with the Express backend.
- * Falls back to http://localhost:4000 when NEXT_PUBLIC_API_URL is not set.
+ * API helpers — Supabase for counters/tracking, Next.js API route for contact.
  */
 
-const API =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
-  "http://localhost:4000";
+import { supabase } from "./supabase";
 
 /* ---------- Love ---------- */
 
 export async function getLoveCount(): Promise<{ count: number }> {
-  const res = await fetch(`${API}/api/love`, { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to fetch love count");
-  return res.json();
+  const { data, error } = await supabase
+    .from("counters")
+    .select("value")
+    .eq("key", "love_count")
+    .single();
+
+  if (error || !data) throw new Error("Failed to fetch love count");
+  return { count: data.value };
 }
 
 export async function postLove(): Promise<{ count: number }> {
-  const res = await fetch(`${API}/api/love`, { method: "POST" });
-  if (!res.ok) throw new Error("Failed to post love");
-  return res.json();
+  const { data, error } = await supabase.rpc("increment_counter", {
+    counter_key: "love_count",
+  });
+
+  if (error) throw new Error("Failed to post love");
+  return { count: data as number };
 }
 
 /* ---------- Repo click tracking ---------- */
 
 export async function postRepoClick(): Promise<{ repoClicks: number }> {
-  const res = await fetch(`${API}/api/track/repo-click`, { method: "POST" });
-  if (!res.ok) throw new Error("Failed to track repo click");
-  return res.json();
+  const { data, error } = await supabase.rpc("increment_counter", {
+    counter_key: "repo_clicks",
+  });
+
+  if (error) throw new Error("Failed to track repo click");
+  return { repoClicks: data as number };
 }
 
 /* ---------- Contact ---------- */
@@ -40,14 +48,16 @@ export interface ContactPayload {
 export async function postContact(
   data: ContactPayload
 ): Promise<{ ok: boolean }> {
-  const res = await fetch(`${API}/api/contact`, {
+  const res = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    throw new Error((err as { error?: string }).error || "Failed to send message");
+    throw new Error(
+      (err as { error?: string }).error || "Failed to send message"
+    );
   }
   return res.json();
 }

@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowTopRightOnSquareIcon,
-  PlayIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import type { Project } from "@/lib/data";
 
@@ -97,10 +94,16 @@ export default function ProjectCard({ project, index }: Props) {
       {/* Actions */}
       <div className="flex flex-wrap items-center gap-4">
         {project.live && (
-          <span className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors">
-            <PlayIcon className="w-3.5 h-3.5" />
-            Live demo
-          </span>
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors"
+          >
+            <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5" />
+            Live Demo
+          </a>
         )}
         {/* Only show repo link for non-client projects */}
         {project.repo && project.type !== "client" ? (
