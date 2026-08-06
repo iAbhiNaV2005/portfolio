@@ -45,14 +45,14 @@ export default function ProjectCard({ project, index }: Props) {
       className={`group rounded-xl border border-border bg-surface/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface hover:shadow-[0_0_25px_rgba(99,102,241,0.15),0_0_50px_rgba(99,102,241,0.08)] ${project.live ? "cursor-pointer" : ""}`}
     >
       {/* Thumbnail */}
-      <div className="mb-4 h-36 rounded-lg bg-muted/50 flex items-center justify-center overflow-hidden">
+      <div className="mb-4 h-48 rounded-lg bg-muted/50 flex items-center justify-center overflow-hidden">
         {project.thumbnail ? (
           <Image
             src={project.thumbnail}
             alt={project.title}
             width={400}
-            height={144}
-            className="h-full w-full object-cover object-top"
+            height={192}
+            className="h-full w-full object-cover object-center"
           />
         ) : (
           <span className="text-3xl font-bold text-text-muted/30 select-none">

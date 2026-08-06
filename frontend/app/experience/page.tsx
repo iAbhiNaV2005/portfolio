@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
 import { experiences } from "@/lib/data";
@@ -25,15 +26,38 @@ export default function ExperiencePage() {
                 {/* Timeline dot */}
                 <div className="absolute -left-[1.85rem] sm:-left-[2.55rem] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-bg" />
 
-                <p className="text-xs uppercase tracking-wider text-accent mb-1">
-                  {exp.period}
-                </p>
-                <h3 className="text-lg font-semibold text-text-primary">
-                  {exp.role}
-                </h3>
-                <p className="text-sm text-text-muted mb-3">{exp.company}</p>
+                {/* Company logo placeholder + header */}
+                <div className="flex items-start gap-4 mb-3">
+                  {/* Avatar */}
+                  <div
+                    className="relative shrink-0 h-11 w-11 rounded-xl border border-border bg-surface flex items-center justify-center text-sm font-bold text-accent select-none shadow-sm overflow-hidden"
+                    title={exp.company}
+                    aria-label={`${exp.company} logo`}
+                  >
+                    {exp.logo ? (
+                      <Image
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      exp.company[0]
+                    )}
+                  </div>
 
-                <ul className="space-y-2">
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-accent mb-0.5">
+                      {exp.period}
+                    </p>
+                    <h3 className="text-lg font-semibold text-text-primary leading-tight">
+                      {exp.role}
+                    </h3>
+                    <p className="text-sm text-text-muted">{exp.company}</p>
+                  </div>
+                </div>
+
+                <ul className="space-y-2 pl-1">
                   {exp.bullets.map((bullet, j) => (
                     <li
                       key={j}

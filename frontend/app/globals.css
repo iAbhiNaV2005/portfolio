@@ -61,12 +61,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Prevent horizontal overflow on mobile */
-*, *::before, *::after {
-  max-width: 100%;
-}
-
-img, video, canvas, svg {
+/* Prevent horizontal overflow on mobile — scoped to replaced/media elements only */
+img, video, canvas, svg, iframe {
   max-width: 100%;
   height: auto;
 }
@@ -129,4 +125,21 @@ img, video, canvas, svg {
 
 header, footer, main, nav {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---- Shared keyframes ---- */
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float-bob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

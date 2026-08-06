@@ -41,9 +41,9 @@ export const skills = {
     "Vite",
     "Framer Motion",
   ],
-  Backend: ["Node.js", "Spring Boot", "Express.js", "FastAPI"],
-  Databases: ["MySQL", "PostgreSQL", "Firebase", "Redis"],
-  Languages: ["C++", "Java", "Python"],
+  Backend: ["Node.js", "Spring Boot", "Express.js", "FastAPI", "GraphQL", "Hibernate"],
+  Databases: ["MySQL", "PostgreSQL", "Firebase", "Redis", "DynamoDB", "pgvector"],
+  Languages: ["Java", "Python", "JavaScript (ES6+)", "TypeScript", "SQL", "C++"],
   Tools: [
     "VS Code",
     "Antigravity",
@@ -53,9 +53,17 @@ export const skills = {
     "Git",
   ],
   "Cloud & Infrastructure": [
-    "AWS (EC2, S3, RDS, IAM)",
+    "AWS (EC2, S3, RDS, IAM, Lambda, API Gateway)",
+    "AWS SAM",
     "Docker",
     "GitHub Actions",
+  ],
+  "AI & Machine Learning": [
+    "LangChain",
+    "RAG",
+    "OpenAI API",
+    "Gemini API",
+    "Pinecone",
   ],
 };
 
@@ -158,11 +166,12 @@ export const projects: Project[] = [
       "Turn chaotic photo collections into a personalized gallery of you, powered by smart face recognition and seamless discovery.",
     tech: [
       "Next.js",
-      "Tailwind CSS",
       "AWS Lambda",
-      "DynamoDB",
       "AWS S3",
-      "Python face-recognition",
+      "AWS SAM",
+      "AWS API Gateway",
+      "DLib",
+      "NumPy",
       "Docker",
     ],
     repo: "https://github.com/iAbhiNaV2005/GrabPic.git",
@@ -226,13 +235,15 @@ export interface Experience {
   company: string;
   period: string;
   bullets: string[];
+  logo?: string;
 }
 
 export const experiences: Experience[] = [
   {
     role: "Full Stack Developer",
     company: "Noodiyos",
-    period: "Feb 2026 – Present",
+    period: "Jan 2026 - Mar 2026",
+    logo: "/Noodiyos.png",
     bullets: [
       'Engineered the "Appetite Sense AI" backend using FastAPI and RAG architecture, leveraging OpenAI embeddings for context-aware food recommendations.',
       "Implemented full-stack features using React and TypeScript, ensuring seamless data flow between the AI model and the user interface.",
@@ -242,7 +253,8 @@ export const experiences: Experience[] = [
   {
     role: "Full Stack Developer",
     company: "Neximprove (Trade-Tech SaaS)",
-    period: "Dec 2025 – Feb 2026",
+    period: "Dec 2025 - Jan 2026",
+    logo: "/Neximprove.png",
     bullets: [
       "Took ownership of high-priority (P0) backend development, building stable RESTful APIs for Department and Organizational Chart modules using Express.js and TypeScript.",
       "Built full-stack User Management features, integrating React interfaces with secure TypeScript backends to handle complex admin workflows and data updates.",
@@ -251,7 +263,7 @@ export const experiences: Experience[] = [
   {
     role: "Open Source Contributor",
     company: "ZipTales — AI News Verification Platform",
-    period: "Aug 2025 – Sep 2025",
+    period: "Apr 2025 – Jun 2025",
     bullets: [
       "Contributed to an AI-powered news verification platform by engineering responsive UI components using React.js.",
       "Refactored legacy frontend code, reducing page load latency and improving component reusability.",

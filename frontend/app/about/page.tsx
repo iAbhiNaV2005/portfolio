@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
 import { bio, skills, siteConfig } from "@/lib/data";
@@ -27,11 +28,28 @@ export default function AboutPage() {
           <div className="h-1 w-12 rounded-full bg-accent mb-10" />
         </SectionReveal>
 
-        {/* Bio */}
+        {/* Profile + Bio — two column on md+ */}
         <SectionReveal>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12 text-lg">
-            {bio.short}
-          </p>
+          <div className="flex flex-col md:flex-row gap-10 md:gap-14 items-start mb-12">
+            {/* Profile image */}
+            <div className="shrink-0 mx-auto md:mx-0">
+              <div className="relative h-52 w-52 rounded-2xl overflow-hidden ring-2 ring-accent/30 shadow-[0_0_40px_rgba(99,102,241,0.18)]">
+                <Image
+                  src="/profile.jpg"
+                  alt="Abhinav Mitra"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+            {/* Bio text */}
+            <div>
+              <p className="text-text-secondary leading-relaxed text-lg">
+                {bio.short}
+              </p>
+            </div>
+          </div>
         </SectionReveal>
 
         {/* Quick facts — no phone, no education */}

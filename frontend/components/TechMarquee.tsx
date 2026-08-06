@@ -7,23 +7,23 @@
  */
 
 const techs = [
-  { name: "Next.js",        slug: "nextdotjs" },
-  { name: "React",          slug: "react" },
-  { name: "Spring Boot",    slug: "springboot" },
-  { name: "Express",        slug: "express" },
-  { name: "PostgreSQL",     slug: "postgresql" },
-  { name: "MySQL",          slug: "mysql" },
-  { name: "Git",            slug: "git" },
-  { name: "Docker",         slug: "docker" },
-  { name: "FastAPI",        slug: "fastapi" },
-  { name: "Redis",          slug: "redis" },
-  { name: "C++",            slug: "cplusplus" },
-  { name: "Java",           slug: "openjdk" },
-  { name: "Python",         slug: "python" },
-  { name: "Framer Motion",  slug: "framer" },
-  { name: "Tailwind CSS",   slug: "tailwindcss" },
-  { name: "TypeScript",     slug: "typescript" },
-  { name: "Node.js",        slug: "nodedotjs" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "React", slug: "react" },
+  { name: "Spring Boot", slug: "springboot" },
+  { name: "Express", slug: "express" },
+  { name: "PostgreSQL", slug: "postgresql" },
+  { name: "MySQL", slug: "mysql" },
+  { name: "Git", slug: "git" },
+  { name: "Docker", slug: "docker" },
+  { name: "FastAPI", slug: "fastapi" },
+  { name: "Redis", slug: "redis" },
+  { name: "C++", slug: "cplusplus" },
+  { name: "Java", slug: "openjdk" },
+  { name: "Python", slug: "python" },
+  { name: "Framer Motion", slug: "framer" },
+  { name: "Tailwind CSS", slug: "tailwindcss" },
+  { name: "TypeScript", slug: "typescript" },
+  { name: "Node.js", slug: "nodedotjs" },
 ];
 
 function LogoItem({ name, slug }: { name: string; slug: string }) {
@@ -89,6 +89,22 @@ function AwsItem() {
         paddingLeft: "20px",
         paddingRight: "20px",
         flexShrink: 0,
+        transition: "transform 0.3s ease, opacity 0.3s ease",
+        cursor: "default",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "scale(1.15)";
+        const svg = e.currentTarget.querySelector("svg");
+        const span = e.currentTarget.querySelector("span");
+        if (svg) { svg.style.opacity = "1"; svg.style.color = "var(--color-accent)"; }
+        if (span) span.style.color = "var(--color-accent)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "scale(1)";
+        const svg = e.currentTarget.querySelector("svg");
+        const span = e.currentTarget.querySelector("span");
+        if (svg) { svg.style.opacity = "0.6"; svg.style.color = "var(--color-text-muted)"; }
+        if (span) span.style.color = "var(--color-text-muted)";
       }}
     >
       <svg
@@ -165,7 +181,7 @@ export default function TechMarquee() {
           style={{
             display: "flex",
             width: "max-content",
-            animation: "marquee-scroll 15s linear infinite",
+            animation: "marquee-scroll 30s linear infinite",
           }}
         >
           {/* First set */}

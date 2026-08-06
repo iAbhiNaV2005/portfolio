@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
 import ProjectCard from "@/components/ProjectCard";
@@ -43,11 +42,10 @@ export default function WorkPage() {
               <button
                 key={f.value}
                 onClick={() => setActiveFilter(f.value)}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  activeFilter === f.value
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer ${activeFilter === f.value
                     ? "bg-accent text-white"
                     : "border border-border bg-surface/50 text-text-secondary hover:border-accent/40 hover:text-text-primary"
-                }`}
+                  }`}
               >
                 {f.label}
               </button>

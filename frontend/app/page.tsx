@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import LoveButton from "@/components/LoveButton";
@@ -30,7 +31,46 @@ export default function HomePage() {
             0%, 100% { text-shadow: 0 0 20px rgba(99, 102, 241, 0.0); }
             50% { text-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
           }
+          @keyframes float-bob {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+          }
+          @keyframes ring-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
         `}</style>
+
+        {/* Profile image with animated glow ring */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
+          className="mb-6 relative"
+          style={{ animation: "float-bob 4s ease-in-out infinite" }}
+        >
+          {/* Spinning gradient ring */}
+          <div
+            className="absolute -inset-1.5 rounded-full"
+            style={{
+              background: "conic-gradient(from 0deg, #6366f1, #a855f7, #ec4899, #6366f1)",
+              animation: "ring-spin 4s linear infinite",
+              padding: "2px",
+            }}
+          >
+            <div className="h-full w-full rounded-full bg-bg" />
+          </div>
+          {/* Avatar */}
+          <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden ring-2 ring-bg">
+            <Image
+              src="/profile.jpg"
+              alt="Abhinav Mitra"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
 
         {/* Overline */}
         <motion.p
