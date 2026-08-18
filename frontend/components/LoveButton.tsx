@@ -41,8 +41,12 @@ export default function LoveButton() {
     try {
       const data = await postLove();
       setCount(data.count);
-    } catch {
-      // keep optimistic count
+    } catch (err) {
+      // Roll back optimistic update — the DB write failed
+      console.error("[LoveButton] postLove failed:", err);
+      setCount((prev) => (prev !== null ? prev - 1 : null));
+      setLoved(false);
+      localStorage.removeItem("loveGiven");
     }
   }, [loved]);
 
