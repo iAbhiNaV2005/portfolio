@@ -2,73 +2,79 @@ import type { Metadata } from "next";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
 import { siteConfig, bio, education, skills, experiences } from "@/lib/data";
-import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon, AcademicCapIcon, BriefcaseIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Resume — Abhinav Mitra",
   description:
-    "Resume of Abhinav Mitra — Full Stack Developer with expertise in web applications, cloud architecture, and backend systems.",
+    "Curriculum Vitae of Abhinav Mitra — Full Stack Developer with expertise in React, Next.js, FastAPI, Spring Boot, and AWS.",
 };
 
 export default function ResumePage() {
+  const allSkills = Array.from(new Set(Object.values(skills).flat()));
+
   return (
     <PageTransition>
-      <div className="mx-auto max-w-3xl px-6 py-16">
+      <div className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
+        {/* Header with Download Action */}
         <SectionReveal>
-          <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-10 border-b border-border/60 mb-12">
             <div>
-              <h1 className="text-3xl font-bold text-text-primary mb-2">
-                Resume
+              <span className="text-xs font-bold uppercase tracking-widest text-accent">
+                Curriculum Vitae
+              </span>
+              <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-text-primary mt-1">
+                {siteConfig.name}
               </h1>
-              <div className="h-1 w-12 rounded-full bg-accent" />
+              <p className="text-sm text-text-secondary mt-1.5">{siteConfig.tagline}</p>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-text-muted">
+                <span>📍 {bio.location}</span>
+                <span>✉️ {bio.email}</span>
+              </div>
             </div>
+
             <a
               href={siteConfig.resumeDownloadUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+              className="inline-flex items-center self-start sm:self-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:bg-accent-hover transition-colors"
             >
-              <ArrowDownTrayIcon className="w-4 h-4" />
+              <ArrowDownTrayIcon className="h-4 w-4" />
               Download PDF
             </a>
           </div>
         </SectionReveal>
 
-        {/* Header */}
+        {/* Experience Section */}
         <SectionReveal>
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold text-text-primary">
-              {siteConfig.name}
-            </h2>
-            <p className="text-text-secondary mt-1">{siteConfig.tagline}</p>
-            <div className="flex flex-wrap gap-x-6 gap-y-1 mt-3 text-sm text-text-muted">
-              <span>{bio.location}</span>
-              <span>{bio.email}</span>
+          <section className="mb-14">
+            <div className="flex items-center gap-2.5 mb-6">
+              <BriefcaseIcon className="h-5 w-5 text-accent" />
+              <h2 className="font-display text-2xl font-bold text-text-primary">
+                Work Experience
+              </h2>
             </div>
-          </div>
-        </SectionReveal>
 
-        {/* Experience */}
-        <SectionReveal>
-          <section className="mb-10">
-            <h3 className="text-sm uppercase tracking-wider text-accent mb-4 font-medium">
-              Experience
-            </h3>
-            <div className="space-y-6">
+            <div className="space-y-8 border-l-2 border-border/80 pl-6">
               {experiences.map((exp, i) => (
-                <div key={i} className="border-l-2 border-border pl-5">
-                  <p className="font-semibold text-text-primary">{exp.role}</p>
-                  <p className="text-sm text-text-muted mb-2">
-                    {exp.company} · {exp.period}
+                <div key={i} className="relative">
+                  <div className="absolute -left-[1.85rem] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-bg" />
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
+                    <h3 className="font-display text-lg font-bold text-text-primary">
+                      {exp.role}
+                    </h3>
+                    <span className="text-xs font-semibold text-accent">
+                      {exp.period}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-text-secondary mb-3">
+                    {exp.company}
                   </p>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {exp.bullets.map((b, j) => (
-                      <li
-                        key={j}
-                        className="text-sm text-text-secondary flex gap-2"
-                      >
-                        <span className="text-accent shrink-0">▸</span>
-                        {b}
+                      <li key={j} className="text-sm text-text-secondary leading-relaxed flex gap-2">
+                        <span className="text-accent mt-0.5 font-bold">›</span>
+                        <span>{b}</span>
                       </li>
                     ))}
                   </ul>
@@ -78,17 +84,21 @@ export default function ResumePage() {
           </section>
         </SectionReveal>
 
-        {/* Education — this is the only place it appears */}
+        {/* Education Section */}
         <SectionReveal>
-          <section className="mb-10">
-            <h3 className="text-sm uppercase tracking-wider text-accent mb-4 font-medium">
-              Education
-            </h3>
-            <div className="border-l-2 border-border pl-5">
-              <p className="font-semibold text-text-primary">
+          <section className="mb-14">
+            <div className="flex items-center gap-2.5 mb-6">
+              <AcademicCapIcon className="h-5 w-5 text-accent" />
+              <h2 className="font-display text-2xl font-bold text-text-primary">
+                Education
+              </h2>
+            </div>
+
+            <div className="rounded-2xl border border-border/60 bg-surface/40 p-6 backdrop-blur-sm">
+              <h3 className="font-display text-lg font-bold text-text-primary">
                 {education.degree}
-              </p>
-              <p className="text-sm text-text-secondary">
+              </h3>
+              <p className="text-sm text-text-secondary mt-1">
                 {education.institution}
                 {education.period ? ` · ${education.period}` : ""}
               </p>
@@ -96,17 +106,21 @@ export default function ResumePage() {
           </section>
         </SectionReveal>
 
-        {/* Skills */}
+        {/* Skills List */}
         <SectionReveal>
           <section>
-            <h3 className="text-sm uppercase tracking-wider text-accent mb-4 font-medium">
-              Skills
-            </h3>
+            <div className="flex items-center gap-2.5 mb-6">
+              <WrenchScrewdriverIcon className="h-5 w-5 text-accent" />
+              <h2 className="font-display text-2xl font-bold text-text-primary">
+                Skills & Technologies
+              </h2>
+            </div>
+
             <div className="flex flex-wrap gap-2">
-              {[...new Set(Object.values(skills).flat())].map((s) => (
+              {allSkills.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full border border-border px-3 py-1 text-sm text-text-secondary transition-all duration-200 hover:scale-110 hover:border-accent/50 hover:text-accent hover:bg-accent/5 cursor-default"
+                  className="rounded-lg border border-border/70 bg-surface/60 px-3.5 py-1.5 text-xs font-medium text-text-secondary select-none"
                 >
                   {s}
                 </span>

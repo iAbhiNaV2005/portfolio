@@ -16,38 +16,57 @@
   --color-error: #ef4444;
   --color-heart: #f43f5e;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-outfit), "Outfit", sans-serif;
 }
 
 /* ---- Light mode (default) ---- */
-
 :root {
   --bg: #f8f9fc;
   --surface: #ffffff;
   --surface-hover: #f0f1f5;
   --muted: #e8eaef;
   --border: #d4d8e0;
-  --text-primary: #1a1d24;
+  --text-primary: #12151c;
   --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
+  --text-muted: #8c95a3;
 }
 
 /* ---- Dark mode ---- */
-
 .dark {
-  --bg: #0b0f14;
-  --surface: #131920;
-  --surface-hover: #1a2230;
-  --muted: #1e2730;
-  --border: #2a3444;
-  --text-primary: #e4e8ef;
-  --text-secondary: #8b98a9;
-  --text-muted: #5c6b7d;
+  --bg: #090d12;
+  --surface: #10161f;
+  --surface-hover: #18202c;
+  --muted: #1a222e;
+  --border: #232e3d;
+  --text-primary: #f0f3f8;
+  --text-secondary: #94a3b8;
+  --text-muted: #5e6f84;
+}
+
+/* ---- Lenis smooth scroll ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* ---- Base ---- */
-
 html {
   scroll-behavior: smooth;
 }
@@ -61,7 +80,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Prevent horizontal overflow on mobile — scoped to replaced/media elements only */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Prevent horizontal overflow on mobile */
 img, video, canvas, svg, iframe {
   max-width: 100%;
   height: auto;
@@ -76,7 +99,6 @@ img, video, canvas, svg, iframe {
 }
 
 /* ---- Custom scrollbar ---- */
-
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -92,43 +114,19 @@ img, video, canvas, svg, iframe {
 }
 
 /* ---- Selection ---- */
-
 ::selection {
   background: var(--color-accent);
-  color: white;
+  color: #ffffff;
 }
 
 /* ---- Focus ring ---- */
-
 *:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* ---- Marquee animation ---- */
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 35s linear infinite;
-}
-
-/* ---- Theme transition ---- */
-
-header, footer, main, nav {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-/* ---- Shared keyframes ---- */
-
+/* ---- Keyframe animations ---- */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -136,10 +134,42 @@ header, footer, main, nav {
 
 @keyframes float-bob {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes ring-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.97); }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ---- Reduced motion support ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
 }

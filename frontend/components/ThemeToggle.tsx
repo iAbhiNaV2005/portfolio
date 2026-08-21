@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import { motion } from "framer-motion";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
-/* Tiny store that syncs with <html> class + localStorage */
 function subscribe(cb: () => void) {
   const observer = new MutationObserver(cb);
   observer.observe(document.documentElement, {
@@ -18,7 +18,7 @@ function getSnapshot() {
 }
 
 function getServerSnapshot() {
-  return false; // default: light mode on server
+  return false;
 }
 
 export default function ThemeToggle() {
@@ -36,16 +36,26 @@ export default function ThemeToggle() {
   }, [dark]);
 
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.88, rotate: 15 }}
+      whileHover={{ scale: 1.08 }}
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      className="rounded-full p-2 text-text-muted hover:text-text-primary hover:bg-surface-hover transition-colors cursor-pointer"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-surface/50 text-text-secondary hover:text-text-primary hover:bg-surface-hover backdrop-blur-md transition-colors cursor-pointer"
     >
-      {dark ? (
-        <SunIcon className="w-5 h-5" />
-      ) : (
-        <MoonIcon className="w-5 h-5" />
-      )}
-    </button>
+      <motion.div
+        key={dark ? "sun" : "moon"}
+        initial={{ scale: 0.5, rotate: -30, opacity: 0 }}
+        animate={{ scale: 1, rotate: 0, opacity: 1 }}
+        exit={{ scale: 0.5, rotate: 30, opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+      >
+        {dark ? (
+          <SunIcon className="h-5 w-5 text-amber-400" />
+        ) : (
+          <MoonIcon className="h-5 w-5 text-indigo-500" />
+        )}
+      </motion.div>
+    </motion.button>
   );
 }

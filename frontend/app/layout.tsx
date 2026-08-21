@@ -1,13 +1,27 @@
 import type { Metadata } from "next";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CursorParticles from "@/components/CursorParticles";
+import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Abhinav Mitra — Portfolio",
+  title: "Abhinav Mitra — Full Stack Developer",
   description:
-    "Abhinav Mitra — Full Stack Developer. I build web applications, cloud systems, and digital products for businesses and startups.",
+    "Portfolio of Abhinav Mitra — Full Stack Developer specializing in high-performance web applications, scalable cloud systems, and modern digital experiences.",
 };
 
 export default function RootLayout({
@@ -16,35 +30,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${outfit.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark')})()`,
+            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}})()`,
           }}
         />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className="font-sans antialiased flex flex-col min-h-screen">
-        <CursorParticles />
-        <Header />
-        <main className="relative z-10 flex-1 flex flex-col pt-20">
-          {children}
-        </main>
-        <Footer />
+      <body className="font-sans antialiased flex flex-col min-h-screen selection:bg-accent selection:text-white">
+        <SmoothScroll>
+          <CustomCursor />
+          <Header />
+          <main className="relative z-10 flex-1 flex flex-col pt-20">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

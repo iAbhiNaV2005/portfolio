@@ -3,71 +3,90 @@ import Image from "next/image";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
 import { experiences } from "@/lib/data";
+import { BriefcaseIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Experience — Abhinav Mitra",
-  description: "Work experience and internships of Abhinav Mitra.",
+  description: "Work history, software engineering roles, and contributions of Abhinav Mitra.",
 };
 
 export default function ExperiencePage() {
   return (
     <PageTransition>
-      <div className="mx-auto max-w-4xl px-6 py-16">
+      <div className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
+        {/* Header */}
         <SectionReveal>
-          <h1 className="text-3xl font-bold text-text-primary mb-2">Experience</h1>
-          <div className="h-1 w-12 rounded-full bg-accent mb-10" />
+          <div className="mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent">
+              Career
+            </span>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-text-primary mt-2 mb-4">
+              Work Experience & Impact
+            </h1>
+            <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-xl">
+              Proven track record engineering high-throughput backends, integrating AI architectures, and building production interfaces.
+            </p>
+          </div>
         </SectionReveal>
 
         {/* Timeline */}
-        <div className="relative border-l-2 border-border pl-6 sm:pl-8 space-y-10 sm:space-y-12">
+        <div className="relative border-l-2 border-border/80 pl-6 sm:pl-10 space-y-12 sm:space-y-16">
           {experiences.map((exp, i) => (
-            <SectionReveal key={i}>
-              <div className="relative">
-                {/* Timeline dot */}
-                <div className="absolute -left-[1.85rem] sm:-left-[2.55rem] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-bg" />
-
-                {/* Company logo placeholder + header */}
-                <div className="flex items-start gap-4 mb-3">
-                  {/* Avatar */}
-                  <div
-                    className="relative shrink-0 h-11 w-11 rounded-xl border border-border bg-surface flex items-center justify-center text-sm font-bold text-accent select-none shadow-sm overflow-hidden"
-                    title={exp.company}
-                    aria-label={`${exp.company} logo`}
-                  >
-                    {exp.logo ? (
-                      <Image
-                        src={exp.logo}
-                        alt={`${exp.company} logo`}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      exp.company[0]
-                    )}
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-accent mb-0.5">
-                      {exp.period}
-                    </p>
-                    <h3 className="text-lg font-semibold text-text-primary leading-tight">
-                      {exp.role}
-                    </h3>
-                    <p className="text-sm text-text-muted">{exp.company}</p>
-                  </div>
+            <SectionReveal key={exp.company + exp.period} delay={i * 0.1}>
+              <div className="relative group">
+                {/* Timeline node dot */}
+                <div className="absolute -left-[1.95rem] sm:-left-[2.95rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-accent bg-bg shadow-[0_0_12px_rgba(99,102,241,0.5)] transition-transform duration-300 group-hover:scale-125">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 </div>
 
-                <ul className="space-y-2 pl-1">
-                  {exp.bullets.map((bullet, j) => (
-                    <li
-                      key={j}
-                      className="text-sm text-text-secondary leading-relaxed flex gap-2"
-                    >
-                      <span className="text-accent mt-1 shrink-0">▸</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+                {/* Company & Role header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                  <div className="flex items-center gap-3.5">
+                    {/* Logo container */}
+                    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/80 bg-surface/60 shadow-sm">
+                      {exp.logo ? (
+                        <Image
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <span className="font-display text-lg font-bold text-accent">
+                          {exp.company[0]}
+                        </span>
+                      )}
+                    </div>
+
+                    <div>
+                      <h2 className="font-display text-xl font-bold text-text-primary group-hover:text-accent transition-colors">
+                        {exp.role}
+                      </h2>
+                      <p className="text-sm font-medium text-text-secondary">
+                        {exp.company}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="inline-flex items-center self-start sm:self-center rounded-full border border-border/60 bg-surface/50 px-3.5 py-1 text-xs font-semibold tracking-wide text-accent backdrop-blur-sm">
+                    {exp.period}
+                  </span>
+                </div>
+
+                {/* Bullet details card */}
+                <div className="rounded-2xl border border-border/60 bg-surface/40 p-5 sm:p-6 backdrop-blur-sm transition-colors hover:border-accent/30 hover:bg-surface/60">
+                  <ul className="space-y-2.5">
+                    {exp.bullets.map((bullet, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-2.5 text-sm text-text-secondary leading-relaxed"
+                      >
+                        <span className="text-accent mt-1 shrink-0 font-bold">›</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </SectionReveal>
           ))}

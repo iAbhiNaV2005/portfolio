@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center flex-1 px-6 py-24 text-center">
-      {/* Big 404 */}
+      {/* Big 404 display */}
       <p
-        className="text-[120px] sm:text-[160px] font-black leading-none select-none"
+        className="font-display text-[110px] sm:text-[150px] font-black leading-none select-none tracking-tighter"
         style={{
           backgroundImage: "linear-gradient(270deg, #6366f1, #a855f7, #ec4899, #6366f1)",
           backgroundSize: "200% 200%",
@@ -23,18 +23,18 @@ export default function NotFound() {
         404
       </p>
 
-      <h1 className="text-2xl sm:text-3xl font-bold text-text-primary mt-2 mb-3">
-        Page not found
+      <h1 className="font-display text-2xl sm:text-3xl font-bold text-text-primary mt-2 mb-3">
+        Page Not Found
       </h1>
-      <p className="text-text-secondary max-w-sm mb-8">
-        Looks like this page doesn&apos;t exist. It may have been moved or the URL is incorrect.
+      <p className="text-text-secondary max-w-md mb-8 text-sm sm:text-base leading-relaxed">
+        The requested page does not exist or has been moved. Return back to explore the portfolio.
       </p>
 
       <Link
         href="/"
-        className="rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+        className="rounded-xl bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:bg-accent-hover transition-colors"
       >
-        ← Back to Home
+        ← Back to Homepage
       </Link>
     </div>
   );
