@@ -12,9 +12,9 @@ export const siteConfig = {
   repoUrl: "https://github.com/iAbhiNav2005/portfolio",
   portfolioUrl: "https://abhinavm-portfolio.vercel.app",
   resumeUrl:
-    "https://drive.google.com/file/d/1ZQUve17fnmI3b3teJGMVVX7OZOAR90rV/view?usp=sharing",
+    "https://drive.google.com/file/d/1US1GblD61gx8D2OyMvCeG9c3UpVOVMj4/view?usp=sharing",
   resumeDownloadUrl:
-    "https://drive.google.com/uc?export=download&id=1ZQUve17fnmI3b3teJGMVVX7OZOAR90rV",
+    "https://drive.google.com/uc?export=download&id=1US1GblD61gx8D2OyMvCeG9c3UpVOVMj4",
 };
 
 export const bio = {
