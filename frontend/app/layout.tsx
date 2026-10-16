@@ -19,9 +19,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Abhinav Mitra — Full Stack Developer",
+  title: "Abhinav Mitra — Full Stack Software Engineer | Spring Boot, React, AWS",
   description:
-    "Portfolio of Abhinav Mitra — Full Stack Developer specializing in high-performance web applications, scalable cloud systems, and modern digital experiences.",
+    "Portfolio of Abhinav Mitra — Full Stack Software Engineer specializing in Java, Spring Boot, React, Next.js, and AWS Serverless systems. Delhi, India (Open to Relocate).",
+  keywords: [
+    "Abhinav Mitra",
+    "Full Stack Software Engineer",
+    "Java Spring Boot",
+    "React",
+    "Next.js",
+    "AWS Serverless",
+    "RAG",
+    "Model Context Protocol",
+  ],
 };
 
 export default function RootLayout({
@@ -38,7 +48,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased flex flex-col min-h-screen selection:bg-accent selection:text-white">
+      <body className="font-sans antialiased flex flex-col min-h-[100dvh] selection:bg-accent selection:text-white">
         <SmoothScroll>
           <CustomCursor />
           <Header />

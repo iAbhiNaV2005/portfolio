@@ -46,12 +46,12 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    "w-full rounded-xl border border-border/80 bg-surface/60 px-4 py-3.5 text-sm text-text-primary placeholder:text-text-muted focus:border-accent focus:bg-surface focus:outline-none transition-all duration-200";
+    "w-full rounded-lg border border-border bg-surface px-4 py-3 text-sm text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors duration-150";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 max-w-xl">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
       <div>
-        <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-text-secondary mb-2">
+        <label htmlFor="name" className="block text-xs font-mono font-semibold text-text-secondary mb-1.5">
           Your Name
         </label>
         <input
@@ -60,13 +60,13 @@ export default function ContactForm() {
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           className={inputClass}
-          placeholder="e.g. Alex Mercer"
+          placeholder="e.g. Hiring Manager / Engineer"
           disabled={status === "sending"}
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-text-secondary mb-2">
+        <label htmlFor="email" className="block text-xs font-mono font-semibold text-text-secondary mb-1.5">
           Email Address
         </label>
         <input
@@ -75,14 +75,14 @@ export default function ContactForm() {
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           className={inputClass}
-          placeholder="alex@company.com"
+          placeholder="recruiter@company.com"
           disabled={status === "sending"}
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-text-secondary mb-2">
-          Project Details / Inquiry
+        <label htmlFor="message" className="block text-xs font-mono font-semibold text-text-secondary mb-1.5">
+          Opportunity / Project Message
         </label>
         <textarea
           id="message"
@@ -90,39 +90,38 @@ export default function ContactForm() {
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           className={`${inputClass} resize-none`}
-          placeholder="Tell me about your goals, timelines, or role opportunities..."
+          placeholder="Tell me about the engineering role, team, tech stack, or inquiry..."
           disabled={status === "sending"}
         />
       </div>
 
       <motion.button
-        whileTap={{ scale: 0.96 }}
-        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         type="submit"
         disabled={status === "sending"}
-        className="w-full sm:w-auto rounded-xl bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-200 hover:bg-accent-hover disabled:opacity-50 cursor-pointer"
+        className="rounded-lg bg-accent px-6 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors duration-150 hover:bg-accent-hover disabled:opacity-50 cursor-pointer"
       >
         {status === "sending" ? "Sending..." : "Send Message"}
       </motion.button>
 
       {status === "success" && (
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm font-medium text-emerald-600 dark:text-emerald-400"
+          className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3.5 text-xs font-medium text-emerald-600 dark:text-emerald-400"
         >
-          <CheckCircleIcon className="h-5 w-5 shrink-0" />
+          <CheckCircleIcon className="h-4 w-4 shrink-0" />
           <span>Message sent successfully! I will reply to you as soon as possible.</span>
         </motion.div>
       )}
 
       {status === "error" && (
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm font-medium text-rose-600 dark:text-rose-400"
+          className="flex items-center gap-2 rounded-lg border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs font-medium text-rose-600 dark:text-rose-400"
         >
-          <ExclamationCircleIcon className="h-5 w-5 shrink-0" />
+          <ExclamationCircleIcon className="h-4 w-4 shrink-0" />
           <span>{errorMsg}</span>
         </motion.div>
       )}

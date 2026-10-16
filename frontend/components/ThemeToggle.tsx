@@ -37,23 +37,22 @@ export default function ThemeToggle() {
 
   return (
     <motion.button
-      whileTap={{ scale: 0.88, rotate: 15 }}
-      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-surface/50 text-text-secondary hover:text-text-primary hover:bg-surface-hover backdrop-blur-md transition-colors cursor-pointer"
+      className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-hover transition-colors cursor-pointer"
     >
       <motion.div
         key={dark ? "sun" : "moon"}
-        initial={{ scale: 0.5, rotate: -30, opacity: 0 }}
-        animate={{ scale: 1, rotate: 0, opacity: 1 }}
-        exit={{ scale: 0.5, rotate: 30, opacity: 0 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+        initial={{ scale: 0.7, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.7, opacity: 0 }}
+        transition={{ duration: 0.15, ease: "easeOut" }}
       >
         {dark ? (
-          <SunIcon className="h-5 w-5 text-amber-400" />
+          <SunIcon className="h-4.5 w-4.5 text-amber-400" />
         ) : (
-          <MoonIcon className="h-5 w-5 text-indigo-500" />
+          <MoonIcon className="h-4.5 w-4.5 text-accent" />
         )}
       </motion.div>
     </motion.button>

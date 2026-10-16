@@ -2,118 +2,109 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageTransition from "@/components/PageTransition";
 import SectionReveal from "@/components/SectionReveal";
-import ServiceCard from "@/components/ServiceCard";
-import { services } from "@/lib/data";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
-  title: "Services — Abhinav Mitra",
+  title: "Engineering Capabilities — Abhinav Mitra",
   description:
-    "Full stack web development, cloud architecture, UI/UX engineering, and API backend systems.",
+    "Full stack software engineering, backend architectures, AI agent systems, and cloud-native solutions.",
 };
 
-const processSteps = [
+const capabilities = [
   {
-    step: "01",
-    title: "Discovery & Planning",
+    title: "Backend & Distributed Systems",
     description:
-      "Aligning on system architecture, database schema, user flows, and technical scope to ensure a reliable foundation.",
+      "High-throughput RESTful services, database optimizations, and role-based access control built with Java (Spring Boot) and TypeScript.",
+    metrics: "22% SQL latency reduction on SaaS reports",
+    tech: ["Spring Boot", "Express.js", "PostgreSQL", "DynamoDB"],
   },
   {
-    step: "02",
-    title: "Prototyping & Design",
+    title: "Cloud Native & AWS Serverless",
     description:
-      "Crafting high-fidelity, accessible interfaces with interactive micro-animations before writing production code.",
+      "Zero-EC2 overhead serverless architectures. Automated deployment pipelines and containerized Lambda workloads with sub-2s processing times.",
+    metrics: "100% serverless auto-scaling on image ingest",
+    tech: ["AWS Lambda", "AWS SAM", "S3", "Docker"],
   },
   {
-    step: "03",
-    title: "Full Stack Development",
+    title: "AI & Agentic Systems (RAG + MCP)",
     description:
-      "Engineering clean, modular TypeScript code with robust tests, secure authentication, and optimized API latency.",
+      "Autonomous coding agents and semantic search engines utilizing AST chunking, pgvector similarity search, and LangGraph multi-step loops.",
+    metrics: "Sub-3s retrieval · 40% LLM token reduction",
+    tech: ["pgvector", "LangChain", "LangGraph", "MCP"],
   },
   {
-    step: "04",
-    title: "Deployment & Scale",
+    title: "Production E-Commerce & Payment Flow",
     description:
-      "Configuring containerized pipelines, cloud infrastructure on AWS, monitoring tools, and zero-downtime releases.",
+      "High-concurrency client platforms handling automated webhook reconciliation and financial transactions at scale.",
+    metrics: "INR 100,000+ live transactions · 100% success rate",
+    tech: ["Next.js 14", "TypeScript", "Cashfree Gateway", "Firebase"],
   },
 ];
 
-export default function ServicesPage() {
+export default function ServicesRedirectPage() {
   return (
     <PageTransition>
-      <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-        {/* Header */}
+      <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16">
         <SectionReveal>
-          <div className="mb-14 max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent">
-              Offerings
+          <div className="mb-12">
+            <span className="text-xs font-mono font-semibold text-accent uppercase tracking-wider block mb-1">
+              Engineering Profile
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-text-primary mt-2 mb-4">
-              Comprehensive Engineering Services
+            <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-text-primary mb-3">
+              Core Engineering Capabilities
             </h1>
-            <p className="text-base sm:text-lg text-text-secondary leading-relaxed">
-              From conception to high-scale production, delivering digital products that are fast, dependable, and maintainable.
+            <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl">
+              Specialized full-stack and systems engineering focused on backend reliability, AI workflows, and verified client production execution.
             </p>
           </div>
         </SectionReveal>
 
-        {/* Service Cards Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 mb-24">
-          {services.map((service, i) => (
-            <ServiceCard key={service.title} service={service} index={i} />
-          ))}
-        </div>
-
-        {/* Execution Workflow */}
-        <SectionReveal>
-          <div className="mb-12 text-center max-w-xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent">
-              Process
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-text-primary mt-2 mb-3">
-              How Projects Come to Life
-            </h2>
-            <p className="text-sm sm:text-base text-text-secondary">
-              A transparent, iterative execution methodology keeping you in full control every step of the way.
-            </p>
-          </div>
-        </SectionReveal>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-24">
-          {processSteps.map((step, i) => (
-            <SectionReveal key={step.step} delay={i * 0.08}>
-              <div className="group relative flex flex-col justify-between rounded-2xl border border-border/70 bg-surface/50 p-6 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-surface hover:shadow-[0_10px_30px_rgba(99,102,241,0.06)] h-full">
+        <div className="grid gap-4 sm:grid-cols-2 mb-12">
+          {capabilities.map((cap, i) => (
+            <SectionReveal key={cap.title} delay={i * 0.05}>
+              <div className="rounded-xl border border-border bg-surface p-6 h-full flex flex-col justify-between">
                 <div>
-                  <span className="font-display text-4xl font-black text-accent/20 transition-colors group-hover:text-accent/35 select-none block mb-4">
-                    {step.step}
-                  </span>
-                  <h3 className="font-display text-lg font-bold text-text-primary mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                    {step.description}
+                  <h2 className="font-display text-lg font-bold text-text-primary mb-2">
+                    {cap.title}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed mb-4">
+                    {cap.description}
                   </p>
+                  <div className="rounded-md border border-border bg-surface-hover px-2.5 py-1 text-xs font-mono text-accent mb-4">
+                    {cap.metrics}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border">
+                  {cap.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded bg-muted px-2 py-0.5 text-[11px] font-mono text-text-muted"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
             </SectionReveal>
           ))}
         </div>
 
-        {/* CTA */}
         <SectionReveal>
-          <div className="rounded-3xl border border-border/80 bg-surface/50 p-8 sm:p-14 text-center backdrop-blur-xl">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-text-primary mb-3">
-              Ready to kick off your project?
-            </h2>
-            <p className="text-text-secondary mb-8 max-w-lg mx-auto text-base">
-              Let us map out the technical roadmap, timelines, and execution strategy together.
-            </p>
+          <div className="rounded-2xl border border-border bg-surface p-8 text-center flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="text-left">
+              <h3 className="font-display text-lg font-bold text-text-primary">
+                Looking for technical architecture blueprints?
+              </h3>
+              <p className="text-xs sm:text-sm text-text-secondary mt-1">
+                Explore our interactive system designs and DSA metrics in Skills & Systems.
+              </p>
+            </div>
             <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:bg-accent-hover transition-colors"
+              href="/skills"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-xs font-semibold text-white hover:bg-accent-hover transition-colors shrink-0"
             >
-              <span>Get in Touch</span>
+              <span>Explore Systems & Stack</span>
               <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
