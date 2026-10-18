@@ -1,37 +1,40 @@
 import type { Metadata } from "next";
-import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Kanit } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 
-const outfit = Outfit({
+const kanit = Kanit({
   subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-kanit",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Abhinav Mitra — Full Stack Software Engineer | Spring Boot, React, AWS",
+  title: "Abhinav Mitra -- Full Stack Software Engineer",
   description:
-    "Portfolio of Abhinav Mitra — Full Stack Software Engineer specializing in Java, Spring Boot, React, Next.js, and AWS Serverless systems. Delhi, India (Open to Relocate).",
+    "Portfolio of Abhinav Mitra — Full Stack Software Engineer specializing in Java, Spring Boot, React, Next.js, AWS Serverless, and Autonomous AI RAG/MCP Agents.",
   keywords: [
     "Abhinav Mitra",
-    "Full Stack Software Engineer",
-    "Java Spring Boot",
-    "React",
+    "Software Engineer",
+    "Full Stack Developer",
+    "Java",
+    "Spring Boot",
     "Next.js",
+    "React",
     "AWS Serverless",
     "RAG",
     "Model Context Protocol",
   ],
+  authors: [{ name: "Abhinav Mitra" }],
+  openGraph: {
+    title: "Abhinav Mitra -- Full Stack Software Engineer",
+    description:
+      "Full Stack Software Engineer building distributed backends, autonomous AI agents, and event-driven serverless cloud systems.",
+    type: "website",
+  },
+  icons: {
+    icon: "/profile.jpg",
+  },
 };
 
 export default function RootLayout({
@@ -40,29 +43,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} ${outfit.variable} dark`}>
+    <html lang="en" className={kanit.variable} style={{ backgroundColor: "#0C0C0C" }}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}})()`,
-          }}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased flex flex-col min-h-[100dvh] selection:bg-accent selection:text-white bg-bg text-text-primary relative overflow-x-hidden">
-        {/* Grain Noise Overlay for Tactile Depth (Pointer events none) */}
-        <div className="noise-overlay" aria-hidden="true" />
-        
-        {/* Ambient Top Mesh Glow */}
-        <div className="ambient-glow-top" aria-hidden="true" />
-
-        <SmoothScroll>
-          <CustomCursor />
-          <Header />
-          <main className="relative z-10 flex-1 flex flex-col pt-24 sm:pt-28">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScroll>
+      <body
+        className="font-sans antialiased text-[#D7E2EA] bg-[#0C0C0C] min-h-screen selection:bg-[#B600A8] selection:text-white"
+        style={{ overflowX: "clip" }}
+      >
+        <div id="root" style={{ backgroundColor: "#0C0C0C", overflowX: "clip" }}>
+          {children}
+        </div>
       </body>
     </html>
   );
