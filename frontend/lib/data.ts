@@ -15,6 +15,7 @@ export const siteConfig = {
     "https://drive.google.com/file/d/1US1GblD61gx8D2OyMvCeG9c3UpVOVMj4/view?usp=sharing",
   resumeDownloadUrl:
     "https://drive.google.com/uc?export=download&id=1US1GblD61gx8D2OyMvCeG9c3UpVOVMj4",
+  email: "abhinavmitra2@gmail.com",
 };
 
 export const bio = {
